@@ -6,6 +6,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.IO;
 
 public class HttpManager
 {
@@ -58,6 +59,24 @@ public class HttpManager
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadAsStringAsync();
     }
+
+    public static async Task<string> HttpImage(string url)
+    {
+        byte[] imageBytes = await client.GetByteArrayAsync(url);
+        string rootPath = Directory.GetCurrentDirectory();
+        string fileName = Path.GetFileName(@url);
+        string ArtDirectoryName = "Items Art";
+        string ArtDirectoryPath = Path.Combine(rootPath, ArtDirectoryName);
+        if (!Directory.Exists(ArtDirectoryPath))
+        {
+            Directory.CreateDirectory(ArtDirectoryPath);
+        }
+        string localPath = Path.Combine(rootPath, ArtDirectoryName, fileName);
+        Debug.Log(localPath);
+        File.WriteAllBytes(localPath, imageBytes);
+        return localPath;
+    }
+
 
 
 
