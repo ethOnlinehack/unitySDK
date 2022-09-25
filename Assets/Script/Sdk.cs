@@ -22,6 +22,7 @@ public class Sdk : WalletConnectActions
 
     private async void Start()
     {
+        WalletConnect.ActiveSession.OnSessionConnect += ActiveSessionOnConnect;
         // var x = await HttpManager.HttpGet(HttpManager.BuildUrl("/api/v1/get-all-nfts"));
         // Gamer a = await SignIn("0x12345");
         // int quantity = await Verify("0x12345", "631b32532151223c8e1e3a0a");
@@ -35,6 +36,10 @@ public class Sdk : WalletConnectActions
      //string path =  await  HttpManager.HttpImage("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png");
     
         StartCoroutine(LoadTexture("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"));
+    }
+
+    public async void ActiveSessionOnConnect(){
+        await SignIn(getAddress());
     }
 
     public void click(){
