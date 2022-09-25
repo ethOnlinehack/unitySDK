@@ -23,31 +23,25 @@ public class Sdk : WalletConnectActions
     private async void Start()
     {
         WalletConnect.ActiveSession.OnSessionConnect += ActiveSessionOnConnect;
-        // var x = await HttpManager.HttpGet(HttpManager.BuildUrl("/api/v1/get-all-nfts"));
-        // Gamer a = await SignIn("0x12345");
-        // int quantity = await Verify("0x12345", "631b32532151223c8e1e3a0a");
-        // var b = await getAllNfts();
-        // var v = await getAllNftsByGamer("0x12345");
-
-        // sr = GetComponent<SpriteRenderer>();
-        // StartCoroutine(GetTexture());
-        print(Directory.GetCurrentDirectory());
-
-     //string path =  await  HttpManager.HttpImage("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png");
-    
-        StartCoroutine(LoadTexture("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"));
-    }
+}
 
     public async void ActiveSessionOnConnect(object sender, WalletConnectSession session){
-        var x = await  SignIn(getAddress());
-        print(x);
-       
+        await  SignIn(getAddress());       
     }
 
-    public async void click(){
-       //print(await mint(0));
+    public async void MintAction(){
+        print(await mint(0));
         Debug.Log(await Verify(getAddress(),"0"));
        //print(await transferTo("0xabcFa978E8D0b9294D29E1215c0Cd11BEC8023A1", 0));
+    }
+ public async void VerifyAction(){
+        Debug.Log(await Verify(getAddress(),"0"));
+
+    
+    }
+     public async void TransferAction(){
+
+       print(await transferTo("0xabcFa978E8D0b9294D29E1215c0Cd11BEC8023A1", 0));
 
     }
 
