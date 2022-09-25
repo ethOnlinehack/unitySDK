@@ -38,12 +38,17 @@ public class Sdk : WalletConnectActions
         StartCoroutine(LoadTexture("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"));
     }
 
-    public async void ActiveSessionOnConnect(){
-        await SignIn(getAddress());
+    public async void ActiveSessionOnConnect(object sender, WalletConnectSession session){
+        var x = await  SignIn(getAddress());
+        print(x);
+       
     }
 
-    public void click(){
-        Debug.Log(getAddress());
+    public async void click(){
+       //print(await mint(0));
+        Debug.Log(await Verify(getAddress(),"0"));
+       //print(await transferTo("0xabcFa978E8D0b9294D29E1215c0Cd11BEC8023A1", 0));
+
     }
 
     public String getAddress(){
@@ -80,6 +85,7 @@ public class Sdk : WalletConnectActions
     }
 
     public async Task<string> mint(int tokenId){
+
         var address = getAddress();
         var response = await HttpManager.HttpPost(HttpManager.BuildUrl($"/api/v1/mint/{address}/{tokenId}"));
         return response;
@@ -87,7 +93,7 @@ public class Sdk : WalletConnectActions
 
     public async Task<string> transferTo(string to, int tokenId){
         var address = getAddress();
-        var response = await HttpManager.HttpPost(HttpManager.BuildUrl($"/api/v1/mint/{address}/{to}/{tokenId}"));
+        var response = await HttpManager.HttpPost(HttpManager.BuildUrl($"/api/v1/transfer-nft/{address}/{to}/{tokenId}"));
         return response;
     }
 

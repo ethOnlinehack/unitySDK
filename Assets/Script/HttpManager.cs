@@ -12,7 +12,7 @@ public class HttpManager
 {
 
 
-    private static readonly string accessToken = "77560b18-6977-4faf-9210-15d17a9c6ebf";
+    private static readonly string accessToken = "27e01a62-b10e-4874-9ee2-152832023dc6";
     private static readonly string host = "localhost";
     private static readonly int port = 3001;
 
