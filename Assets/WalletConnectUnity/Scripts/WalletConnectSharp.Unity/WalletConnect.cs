@@ -85,6 +85,8 @@ namespace WalletConnectSharp.Unity
         
         public int chainId = 1;
 
+        [SerializeField]
+        public GameObject SDK;
         public WalletConnectEventNoSession ConnectedEvent;
 
         public WalletConnectEventWithSessionData ConnectedEventSession;
@@ -147,6 +149,7 @@ namespace WalletConnectSharp.Unity
             {
                 await Connect();
             }
+            SDK.SetActive(true);
         }
 
         public async Task<WCSessionData> Connect()

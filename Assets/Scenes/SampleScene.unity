@@ -475,7 +475,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &716184708
 GameObject:
@@ -1293,7 +1293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2038588088
 Transform:
   m_ObjectHideFlags: 0
@@ -1354,13 +1354,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultWallet: 0
   retryOnTimeout: 1
-  autoSaveAndResume: 1
+  autoSaveAndResume: 0
   connectOnAwake: 0
   connectOnStart: 1
   createNewSessionOnSessionDisconnect: 1
   connectSessionRetryCount: 3
   customBridgeUrl: 
   chainId: 1
+  SDK: {fileID: 2038588086}
   ConnectedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1458,5 +1459,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
